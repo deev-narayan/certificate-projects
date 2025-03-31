@@ -1,0 +1,21 @@
+{
+  "name": "crs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Civil Registration System",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/translate": "^9.0.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "google-translate-api": "^2.3.0",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.9",
+    "translate-google": "^1.5.0",
+    "translate-google-api": "^1.0.4"
+  }
+}

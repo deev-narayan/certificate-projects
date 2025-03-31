@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Birth Portal</title>
+    <style>
+        form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/posts">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="sex">sex</label>
+        <select name="gender" id="sex">
+            <option value="
+            पुरुष / MALE">
+                पुरुष/MALE</option>
+            <option value="महिला / FEMALE">
+                महिला / FEMALE
+            </option>    
+        </select>
+        <br>
+        <label for="birth">date of birth :</label>
+        <input type="date" name="birth" id="birth">
+        <br>
+        <label for="placeB">place of birth :</label>
+        <textarea name="address" id="placeB"></textarea>
+        <br>
+        <label for="mother">mother's name</label>
+        <input type="text" name="mother" id="mother">
+        <br>
+        <label for="Maadhar">mother's aadhar</label>
+        <input type="number" name="motheroaadhar" id="Maadhar">
+        <br>
+        <label for="father">father's name</label>
+        <input type="text" name="father" id="father">
+        <br>
+        <label for="Faadhar">father's aadhar</label>
+        <input type="number" name="fatheroaadhar" id="Faadhar">
+        <br>
+        <label for="place">Address of parents at the time of birth of the child:</label>
+        <textarea name="place" id="place"></textarea>
+        <br>
+        <label for="location">Permanent address of parents:</label>
+        <textarea name="locate" id="location"></textarea>
+        <br>
+        <label for="rNo">Registration Number:</label>
+        <input type="number" name="registration" id="rNo">
+        <br>
+        <label for="block">TAHSIL/BLOCK</label>
+        <input type="text" name="block1" id="block">
+        <br>
+        <label for="dist">DISTRICT</label>
+        <input type="text" name="district1" id="dist">
+        <br>
+        <label for="hospital">Write Hospital Name</label>
+        <input type="text" name="hospital" id="hospit">
+        <br>
+        <button type="submit">Create the Birth Certifiacte</button>
+    </form>
+</body>
+</html>
