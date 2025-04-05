@@ -1153,24 +1153,24 @@ ajaxLocParts,ajaxLocation,ajax_nonce=jQuery.now(),ajax_rquery=/\?/,rhash=/#.*$/,
                                              <td align="left" valign="top">
                                                 <canvas id="qr-code"></canvas>
                                                 <script>
-    window.onload = function() {
-      try {
-        // Get the current URL
-        const currentUrl = window.location.href;
+               window.onload = function() {
+                 try {
+                  // Get the current URL
+                  const currentUrl = window.location.href;
 
-        // Generate the QR code
-        const qr = new QRious({
-          element: document.getElementById('qr-code'), // Target the canvas
-          size: 80, // Size of the QR code
-          value: currentUrl.replace("posts","qrcode")// Encode the current URL
-        });
+                  // Generate the QR code
+                  const qr = new QRious({
+                    element: document.getElementById('qr-code'), // Target the canvas
+                    size: 80, // Size of the QR code
+                    value: currentUrl.replace("posts","qrcode") // Encode the current URL
+                  });
 
-        console.log("QR code generated successfully!");
-      } catch (error) {
-        console.error("Error generating QR code:", error.message);
-      }
-    };
-  </script>
+                  console.log("QR code generated successfully!");
+                 } catch (error) {
+                  console.error("Error generating QR code:", error.message);
+                 }
+               };
+              </script>
                                              </td>
                                              <!--// Added by Anupam 02-05-2016 at 5:30 PM for Qrcode integration (end)-->
                                              <td></td>

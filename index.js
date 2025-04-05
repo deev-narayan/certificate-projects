@@ -7,7 +7,7 @@ const translate = require("translate-google");
 
 async function translateText(text, targetLanguage = "hi") {
     try {
-        var translation = await translate(text, { from: "en",to: targetLanguage }).then((res) => {
+        await translate(text, { from: "en",to: targetLanguage }).then((res) => {
             console.log(res);
             return res;
         });
@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 let posts =[];
-
+let qrcode = [];
 app.get("/posts/new",( req , res )=>{
     res.render("newBirth.ejs");
 });
@@ -42,6 +42,7 @@ app.post("/posts", (req, res) => {
     console.log(`Block: ${block1}, District: ${district1}`);
     posts.push({ name, gender, birth, address, mother, motheroaadhar, father, fatheroaadhar, place, locate, registration, block1, district1 ,hospital , hiblock , hdist , hihosp });
     res.redirect("/posts");
+    qrcode.push({name,gender,birth,address,mother,motheroaadhar,father,fatheroaadhar,place,locate,registration,block1,district1,hospital,hiblock,hdist,hihosp});
 });
 
 app.get("/posts/:id",(req,res)=>{
@@ -56,29 +57,17 @@ app.get("/posts",(req,res)=>{
     posts=[];
 });
 
-let qrcode = [];
-
-app.get("/posts/new",( req , res )=>{
-    res.render("newBirth.ejs");
-});
-
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post("/qrcode", (req, res) => {
-    let { name, gender, birth, address, mother, father,registration, } = req.body;
-    posts.push({ name, gender, birth, address, mother, father,registration});
-    res.redirect("/qrcode");
-});
-
-app.get("/qrcode/:id", (req, res) => {
+app.get('/qrcode/:id', (req, res) => {
     const { id } = req.params;
     const qr = qrcode[id];
-    res.render("qrcode.ejs", { qr });
+    res.render('qrcode.ejs', { qr });
 });
 
-app.get("/qrcode", (req, res) => {
-    res.render("qrcode.ejs", { qrcode });
-   qrcode = [];
+app.get("/qrcode",(req,res)=>{
+    res.render("qrcode.ejs",{ qrcode });
+    qrcode=[];
 });
 
 app.listen(port,()=>{
