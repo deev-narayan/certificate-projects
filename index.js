@@ -6,15 +6,12 @@ const app = express();
 const translate = require("translate-google");
 
 async function translateText(text, targetLanguage = "hi") {
-    try {
-        await translate(text, { from: "en",to: targetLanguage }).then((res) => {
+        let value = await translate(text, { from: "en",to: targetLanguage }).then((res) => {
             console.log(res);
             return res;
         });
-    } catch (error) {
-        console.error("Error translating text:", error);
-        return null;
-    }
+    console.log("Translated text:", value);
+    return value;
 }
 //set the port
 const port = 3000;
@@ -37,12 +34,15 @@ app.get("/posts/new",( req , res )=>{
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post("/posts", (req, res) => {
-    let { name, gender, birth, address, mother, motheroaadhar, father, fatheroaadhar, place, locate, registration, block1, district1 , hospital ,hiblock=translateText(block1),hdist=translateText(district1),hihosp=translateText(hospital)} = req.body;
+app.post("/posts", async (req, res) => {
+    let { name, gender, birth, address, mother, motheroaadhar, father, fatheroaadhar, place, locate, registration, block1, district1, hospital } = req.body;
+    let hiblock = await translateText(block1);
+    let hdist = await translateText(district1);
+    let hihosp = await translateText(hospital);
     console.log(`Block: ${block1}, District: ${district1}`);
     posts.push({ name, gender, birth, address, mother, motheroaadhar, father, fatheroaadhar, place, locate, registration, block1, district1 ,hospital , hiblock , hdist , hihosp });
     res.redirect("/posts");
-    qrcode.push({name,gender,birth,address,mother,motheroaadhar,father,fatheroaadhar,place,locate,registration,block1,district1,hospital,hiblock,hdist,hihosp});
+    qrcode.push({name,gender,birth,address,mother,father,registration});
 });
 
 app.get("/posts/:id",(req,res)=>{
