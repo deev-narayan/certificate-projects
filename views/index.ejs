@@ -1156,15 +1156,27 @@ ajaxLocParts,ajaxLocation,ajax_nonce=jQuery.now(),ajax_rquery=/\?/,rhash=/#.*$/,
                window.onload = function() {
                  try {
                   // Get the current URL
-                  const currentUrl = window.location.href;
-
-                  // Generate the QR code
-                  const qr = new QRious({
-                    element: document.getElementById('qr-code'), // Target the canvas
-                    size: 80, // Size of the QR code
-                    value: currentUrl.replace("posts","qrcode") // Encode the current URL
-                  });
-
+                    const currentUrl = window.location.href;
+                     const name = encodeURIComponent("<%= post.name %>");
+                     const registration = encodeURIComponent("<%= post.registration %>");
+                     const date = encodeURIComponent("<%= post.birth %>");
+                     const address = encodeURIComponent("<%= post.address %>");
+                     const father = encodeURIComponent("<%= post.father %>");
+                     const mother = encodeURIComponent("<%= post.mother %>");
+                    // Generate the QR code
+                     const qr = new QRious({
+                     element: document.getElementById('qr-code'), // Target the canvas
+                     padding: 0, // No padding
+                     level: 'H', // Error correction level
+                     foreground: 'black', // QR code color
+                     // Set the size of the QR code
+                     // The size of the QR code in pixels
+                     // The size of the QR code in pixels
+                     size: 90, // Size of the QR code
+                     value: `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&date=${date}&address=${address}&father=${father}&mother=${mother}`, // Encode the current URL
+                     background: 'transparent' // Set the background to transparent
+                     });
+                  console.log("QR code value:", `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&date=${date}&address=${address}&father=${father}&mother=${mother}`);
                   console.log("QR code generated successfully!");
                  } catch (error) {
                   console.error("Error generating QR code:", error.message);

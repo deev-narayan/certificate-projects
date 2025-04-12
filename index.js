@@ -42,6 +42,7 @@ app.post("/posts", async (req, res) => {
     console.log(`Block: ${block1}, District: ${district1}`);
     posts.push({ name, gender, birth, address, mother, motheroaadhar, father, fatheroaadhar, place, locate, registration, block1, district1 ,hospital , hiblock , hdist , hihosp });
     res.redirect("/posts");
+    qrcode=[];
     qrcode.push({name,gender,birth,address,mother,father,registration});
 });
 
@@ -57,18 +58,21 @@ app.get("/posts",(req,res)=>{
     posts=[];
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+    const name = qrcode.name;
+    const registration = qrcode.registration;
+    const date = qrcode.birth;
+    const address = qrcode.address;
+    const father = qrcode.father;
+    const mother = qrcode.mother;
+    app.get("/qrcode", (req, res) => {
+        const { name, registration, date, address, father, mother } = req.query;
 
-app.get('/qrcode/:id', (req, res) => {
-    const { id } = req.params;
-    const qr = qrcode[id];
-    res.render('qrcode.ejs', { qr });
-});
+        if (!name && !registration && !date && !address && !father && !mother) {
+            return res.status(400).send("Missing required query parameters.");
+        }
 
-app.get("/qrcode",(req,res)=>{
-    res.render("qrcode.ejs",{ qrcode });
-    qrcode=[];
-});
+        res.render("qrcode.ejs", { name, registration, date, address, father, mother, qrcode });
+    });
 
 app.listen(port,()=>{
     console.log(`App is listening on port :${port}`);
