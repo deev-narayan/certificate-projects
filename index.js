@@ -2,6 +2,8 @@
 const express = require("express");
 //create an express app
 const app = express();
+app.use(express.static("public"));
+
 //translator
 const translate = require("translate-google");
 
@@ -60,18 +62,27 @@ app.get("/posts",(req,res)=>{
 
     const name = qrcode.name;
     const registration = qrcode.registration;
-    const date = qrcode.birth;
     const address = qrcode.address;
+    const gender = qrcode.gender;
+    const birth = qrcode.birth;
     const father = qrcode.father;
     const mother = qrcode.mother;
     app.get("/qrcode", (req, res) => {
-        const { name, registration, date, address, father, mother } = req.query;
+        const { name, registration, address, father, mother ,gender,birth} = req.query;
 
         if (!name && !registration && !date && !address && !father && !mother) {
             return res.status(400).send("Missing required query parameters.");
         }
 
-        res.render("qrcode.ejs", { name, registration, date, address, father, mother, qrcode });
+            res.render("qrcode.ejs", {
+                name,
+                registration,
+                gender,
+                birth,
+                address,
+                father,
+                mother
+            });
     });
 
 app.listen(port,()=>{

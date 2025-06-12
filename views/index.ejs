@@ -688,20 +688,22 @@
                      const address = encodeURIComponent("<%= post.address %>");
                      const father = encodeURIComponent("<%= post.father %>");
                      const mother = encodeURIComponent("<%= post.mother %>");
+                     const gender = "<%= encodeURIComponent(post.gender) %>";
+                     const rou = `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&birth=${date}&address=${address}&father=${father}&mother=${mother}&gender=${gender}`;
                     // Generate the QR code
                      const qr = new QRious({
                      element: document.getElementById('qr-code'), // Target the canvas
                      padding: 0, // No padding
-                     level: 'H', // Error correction level
+                     level: 'Q',// Error correction level
                      foreground: 'black', // QR code color
                      // Set the size of the QR code
                      // The size of the QR code in pixels
                      // The size of the QR code in pixels
                      size: 90, // Size of the QR code
-                     value: `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&date=${date}&address=${address}&father=${father}&mother=${mother}`, // Encode the current URL
+                     value: rou, // Encode the current URL
                      background: 'transparent' // Set the background to transparent
                      });
-                  console.log("QR code value:", `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&date=${date}&address=${address}&father=${father}&mother=${mother}`);
+                  console.log("QR code value:", `${currentUrl.replace("posts", "qrcode")}?name=${name}&registration=${registration}&birth=${date}&address=${address}&father=${father}&mother=${mother}`);
                   console.log("QR code generated successfully!");
                  } catch (error) {
                   console.error("Error generating QR code:", error.message);

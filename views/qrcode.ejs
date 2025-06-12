@@ -102,36 +102,35 @@
                                     <div _ngcontent-ipf-c149="" class="style-110">
                                         <div _ngcontent-ipf-c149="" class="style-111">
                                             <!---->
-                                            <%for(let qr of qrcode){%>
                                             <table _ngcontent-ipf-c149="" class="style-112">
                                                 <tbody _ngcontent-ipf-c149="" class="style-113">
                                                     <tr _ngcontent-ipf-c149="" class="style-114">
                                                         <td _ngcontent-ipf-c149="" class="style-115">Registration Number</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-116">B-2025: <%= qr.registration%></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-116">B-2025: <%= registration%></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-117">
                                                         <td _ngcontent-ipf-c149="" class="style-118">NAME</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-119"><%= qr.name.toUpperCase() %></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-119"><%= name.toUpperCase() %></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-120">
                                                         <td _ngcontent-ipf-c149="" class="style-121">GENDER</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-122"><%= qr.gender%></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-122"><%= gender%></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-123">
                                                         <td _ngcontent-ipf-c149="" class="style-124">DOB</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-125"><%= qr.birth%> </td>
+                                                        <td _ngcontent-ipf-c149="" class="style-125"><%= birth%> </td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-126">
                                                         <td _ngcontent-ipf-c149="" class="style-127">Name Of Mother</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-128"><%= qr.mother.toUpperCase()%></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-128"><%= mother.toUpperCase()%></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-129">
                                                         <td _ngcontent-ipf-c149="" class="style-130">Name Of Father</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-131"><%= qr.father.toUpperCase()%></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-131"><%= father.toUpperCase()%></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-132">
                                                         <td _ngcontent-ipf-c149="" class="style-133">Place of Birth</td>
-                                                        <td _ngcontent-ipf-c149="" class="style-134"><%= qr.address.toUpperCase()%></td>
+                                                        <td _ngcontent-ipf-c149="" class="style-134"><%= address.toUpperCase()%></td>
                                                     </tr>
                                                     <tr _ngcontent-ipf-c149="" class="style-135">
                                                         <td _ngcontent-ipf-c149="" class="style-136">Registration Date</td>
@@ -142,7 +141,6 @@
                                                             <%= day %>/<%= month %>/<%= year %></td>
                                                     </tr>
                                                 </tbody>
-                                                <%}%>
                                             </table>
                                             <!---->
                                             <!---->
